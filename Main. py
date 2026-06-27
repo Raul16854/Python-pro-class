@@ -1,0 +1,20 @@
+word=input("tienes alguna palabra que no entiendas")
+
+meme_dict = {
+            "CRINGE": "Algo excepcionalmente raro o embarazoso",
+            "LOL": "Una respuesta común a algo gracioso",
+            "ROFL" : "una respuesta a una broma",
+            "SHEESH" : "ligera desaprobación",
+            "CREEPY" : "algo siniestro o que de miedo",
+            "AGGRO" : "ponerse agresivo/enojado",
+            "POV" : "Se usa en videos para mostrar una escena desde la perspectiva del espectador.",
+            "RED FLAG" : "Señal de peligro o que algo no esta bien",
+            "FACTS" : "Afirmación verdadera",
+            "PRIME" : "Mejor momento de alguien o algo",
+            "SHIP" : "Relacionar dos personas (o personajes) de manera romántica",
+            "RANDOM" : "Algo aleatorio o sin sentido"
+            }
+if word in meme_dict.keys():
+    print(meme_dict[word])
+else:
+    print("la palabra no esta en el diccionario")

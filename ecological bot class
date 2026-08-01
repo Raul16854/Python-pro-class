@@ -1,0 +1,35 @@
+intents = discord.Intents.default()
+intents.message_content = True
+
+bot = commands.Bot(command_prefix='!', intents=intents)
+
+objetos={"botella de plastico":{"nivel":"alto","prevención":"evitar un uso excesivo de botellas de plástico, reciclar y reutilizar."},
+         "bolsa de plastico":{"nivel":"alto","prevención":"evitar un uso inadecuado y usar alternativas mas ecológicas como bolsas de tela."},
+         "lata de aluminio":{"nivel":"medio","prevención":"reciclar latas de aluminio para reducir la contaminación."},
+         "papel y carton":{"nivel":"medio","prevención":"siempre desecharlas correctamente y evitar el uso de productos no biodegradables."},
+         "vidrio":{"nivel":"bajo","prevención":"reciclar vidrio en sus lugares correspondientes y evitar su quema."},}
+bot.event
+async def on_ready():
+    print(f'We have logged in as {bot.user}')
+
+@bot.command()
+async def clasificar(ctx, *, objeto):
+    objeto = objeto.lower()
+    if objeto in objetos:
+        nivel = objetos[objeto]["nivel"]
+        prevencion = objetos[objeto]["prevención"]
+        await ctx.send(f'El objeto {objeto} tiene un nivel de contaminación {nivel}. Prevención: {prevencion}')
+    else:
+        await ctx.send(f'No se encontró información sobre el objeto {objeto}.') 
+           
+@bot.command()
+async def ayuda_contaminacion(ctx):
+    mensaje = """
+**Comandos disponibles**
+!clasificar botella de plastico
+!clasificar bolsa de plastico
+!clasificar lata de aluminio
+!clasificar papel y carton
+!clasificar vidrio
+"""
+    await ctx.send(mensaje)
